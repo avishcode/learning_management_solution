@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'accounts/css/accounts.css' %}">
+    <title>LMS | {% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <section class="page-heading">
+        {% block page_header %}{% endblock page_header %}
+    </section>
+
+    <section class="page-content">
+        {% block page_content %}{% endblock page_content %}
+    </section>
+
+    <script src="{% static 'accounts/js/accounts.js' %}"></script>
+</body>
+</html>

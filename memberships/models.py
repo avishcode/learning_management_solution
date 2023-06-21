@@ -14,7 +14,7 @@ class Membership(models.Model):
     membership_type = models.CharField(max_length=50, choices=MEMBERSHIP_TYPE)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=200, blank=True)
-    validity = models.DateTimeField(blank=True, null=True)
+    validity = models.IntegerField(blank=True, null=True, help_text="How long this membership plan will valid after the course purchase")
     is_active = models.BooleanField(default=False)
     price = models.IntegerField()
 
