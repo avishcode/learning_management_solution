@@ -7,6 +7,10 @@ from datetime import datetime, timedelta
 
 # Create your views here.
 
+def list_subscriptions(request):
+    subscriptions = SubscriptionType.objects.all()
+    return render(request, "memberships/membership_list.html", {'subscriptions':subscriptions})
+
 
 @login_required
 def subscribe(request, course_id, subscription_type_id):

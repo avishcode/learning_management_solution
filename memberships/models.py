@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from courses.models import Course
+
 
 # Create your models here.
 
@@ -54,6 +54,7 @@ class UserSubscription(models.Model):
 class SubscriptionType(models.Model):
     name = models.CharField(max_length=100)
     duration_days = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=8, decimal_places=2)
 
     def __str__(self):
         return self.name
@@ -61,10 +62,12 @@ class SubscriptionType(models.Model):
 
 class Subscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    # course = models.ForeignKey(Course, on_delete=models.CASCADE)
     subscription_type = models.ForeignKey(SubscriptionType, on_delete=models.CASCADE)
     start_date = models.DateField(auto_now_add=True)
-    end_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.user.username} - {self.course.title}"
+    
+

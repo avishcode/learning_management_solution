@@ -21,14 +21,24 @@ class CourseCreateView(CreateView):
 """
 
 
-@login_required
+
 def course_list(request):
     courses = Course.objects.all()
-    subscriptions = Subscription.objects.filter(user=request.user)
-    subscription_types = SubscriptionType.objects.all()
+    # subscriptions = Subscription.objects.filter(user=request.user)
+    # subscription_types = SubscriptionType.objects.all()
     context = {
         'courses': courses,
-        'subscriptions': subscriptions,
-        'subscription_types': subscription_types
+        # 'subscriptions': subscriptions,
+        # 'subscription_types': subscription_types
     }
     return render(request, 'courses/course_list.html', context)
+
+
+
+@login_required
+def course_view(request):
+    subscription_types = SubscriptionType.objects.filter(user=request.user)
+    context = {
+        'subscription_types': subscription_types
+    }
+    return render(request, 'courses/course_view.html', context)

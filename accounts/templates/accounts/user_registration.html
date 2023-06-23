@@ -1,12 +1,42 @@
 {% extends 'accounts/base.html' %}
 
+{% block title %}register{% endblock title %}
 
-{% block page_content %}
-<h2>Register</h2>
+{% block content %}
+{% comment %} <div class="container col-lg-8 col-md-7">
+  <h2 class="text-center mb-3 mt-3">Login</h2>
+        {% if error_message %}
+          <p>{{ error_message }}</p>
+        {% endif %}
+<form method="POST">
+  {% csrf_token %}
+  <div class="">
+    <label for="username" class="form-label">Username:</label>
+    <input type="text" class="form-control" name="username" placeholder="Enter username" required>
+  </div>
+  <div>
+    <label for="id_password1" class="form-label">Password:</label>
+  <input type="password" class="form-control" name="password1" placeholder="Enter Password" required>
+  </div>
+  <div>
+    <label for="id_password2" class="form-label">Password:</label>
+  <input type="password" class="form-control" name="password2" placeholder="Confirm Password" required>
+  </div>
+  
+  <button class="btn btn-primary mb-3 mt-3" type="submit">Create Account</button>
+</form>
+</div> {% endcomment %}
+
+
+
+
+<div class="container">
+  <h2>Register</h2>
 <form method="POST">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Register</button>
-</form>
+</form> 
+</div>
 
-{% endblock page_content %}
+{% endblock content %}

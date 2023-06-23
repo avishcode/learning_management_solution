@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
-
+from courses.models import Course
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -27,6 +27,19 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('accounts:login')
+
+
+def homepage(request):
+    courses = Course.objects.all()
+    # subscriptions = Subscription.objects.filter(user=request.user)
+    # subscription_types = SubscriptionType.objects.all()
+    context = {
+        'courses': courses,
+        # 'subscriptions': subscriptions,
+        # 'subscription_types': subscription_types
+    }
+    return render(request, "accounts/homepage.html", context)
+
 
 
 

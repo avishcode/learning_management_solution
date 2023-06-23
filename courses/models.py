@@ -1,5 +1,5 @@
 from django.db import models
-
+from memberships.models import SubscriptionType
 # Create your models here.
 
 
@@ -17,7 +17,7 @@ class CourseCategory(models.Model):
 class Course(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    price = models.DecimalField(max_digits=8, decimal_places=2)
+    subscription_type = models.ForeignKey(SubscriptionType, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
