@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Subscription Confirmation</h2>
+  <p>Course: {{ course.title }}</p>
+  <p>Subscription Type: {{ subscription.subscription_type.name }}</p>
+  <p>Price: ${{ course.price }}</p>
+
+  <h3>Payment Details</h3>
+  <form action="https://api.razorpay.com/v1/payments/{{ order_id }}/capture/" method="POST">
+    {% csrf_token %}
+    <script
+      src="https://checkout.razorpay.com/v1/checkout.js"
+      data-key="{{ razorpay_api_key }}"
+      data-amount="{{ order_id.amount }}"
+      data-currency="INR"
+      data-name="Course Subscription"
+      data-description="{{ course.title }} - {{ subscription.subscription_type.name }}"
+      data-image="https://yourwebsite.com/your_logo.png"
+      data-order_id="{{ order_id }}"
+      data-prefill.name="{{ request.user.username }}"
+      data-prefill.email="{{ request.user.email }}"
+      data-theme.color="#F37254"
+    ></script>
+    <button type="submit">Pay Now</button>
+  </form>
+{% endblock %}

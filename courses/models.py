@@ -31,5 +31,5 @@ class Lesson(models.Model):
     lesson_file = models.FileField(upload_to="course/lessons")
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.course}"
     

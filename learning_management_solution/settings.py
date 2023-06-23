@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'courses',
     'memberships',
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+RAZORPAY_API_KEY = 'rzp_test_cqxapLikT85Mpc'
+RAZORPAY_API_SECRET = '4SjKdTJxoGAOBnX5UQfPWWwg'
