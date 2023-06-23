@@ -19,7 +19,7 @@ def user_login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('accounts:dashboard')
+            return redirect('courses:course_list')
         else:
             return render(request, 'accounts/user_login.html', {'error_message': 'Invalid login credentials.'})
     return render(request, 'accounts/user_login.html')

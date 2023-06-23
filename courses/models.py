@@ -15,14 +15,12 @@ class CourseCategory(models.Model):
 
 
 class Course(models.Model):
-    name = models.CharField(max_length=100)
-    short_desc = models.CharField(max_length=150)
-    category = models.ForeignKey(CourseCategory, on_delete=models.DO_NOTHING)
-    long_description = models.TextField(blank=True)
-    thumbnail = models.ImageField(blank=True, upload_to="course_thumbnail")
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=8, decimal_places=2)
 
     def __str__(self):
-        return self.name
+        return self.title
     
 
 

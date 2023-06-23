@@ -1,0 +1,23 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+  <h1>Available Courses</h1>
+  <ul>
+    {% for course in courses %}
+      <li>
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description }}</p>
+        <p>Price: ${{ course.price }}</p>
+        {% comment %} <form action="{% url 'memberships:subscribe' course.id subscription_type.id %}" method="post">
+          {% csrf_token %}
+          <select name="subscription_type_id">
+            {% for subscription_type in subscription_types %}
+              <option value="{{ subscription_type.id }}">{{ subscription_type.name }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit">Subscribe</button>
+        </form> {% endcomment %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

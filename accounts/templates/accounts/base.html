@@ -9,6 +9,16 @@
     <title>LMS | {% block title %}{% endblock title %}</title>
 </head>
 <body>
+    <nav>
+        <a href="{% url 'courses:course_list' %}">Home</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'accounts:logout' %}">Logout</a>
+        {% else %}
+          <a href="{% url 'accounts:login' %}">Login</a>
+          <a href="{% url 'accounts:register' %}">Register</a>
+        {% endif %}
+      </nav>
+      
     <section class="page-heading">
         {% block page_header %}{% endblock page_header %}
     </section>

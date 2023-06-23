@@ -3,6 +3,5 @@ from .models import *
 
 # Register your models here.
 
-
-admin.site.register(Membership)
-admin.site.register(UserSubscription)
+admin.site.register(SubscriptionType)
+admin.site.register(Subscription)

@@ -5,6 +5,4 @@ from .models import *
 
 
 
-admin.site.register(CourseCategory)
 admin.site.register(Course)
-admin.site.register(Lesson)
